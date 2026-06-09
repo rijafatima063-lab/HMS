@@ -36,7 +36,14 @@ if(isset($_POST['add'])){
 <div class="container mt-5">
 
 <h2 class="text-center mb-4">Appointment Management</h2>
+<?php
+$count = mysqli_query($conn, "SELECT COUNT(*) as total FROM appointments");
+$total = mysqli_fetch_assoc($count);
+?>
 
+<div class="alert alert-info text-center">
+    Total Appointments: <strong><?php echo $total['total']; ?></strong>
+</div>
 <div class="card p-4 shadow">
 
 <form method="POST">
