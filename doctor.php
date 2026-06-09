@@ -82,7 +82,7 @@ required>
 <input type="text"
 name="specialization"
 class="form-control"
-placeholder="Enter Specialization"
+placeholder=" Enter Specialization"
 required>
 </div>
 
