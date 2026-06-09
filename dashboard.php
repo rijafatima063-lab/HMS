@@ -29,7 +29,7 @@ $billing = mysqli_fetch_assoc(mysqli_query($conn,"SELECT COUNT(*) AS total FROM 
 
 <div class="d-flex">
 
-<!-- Sidebar -->
+
 
 <div class="bg-primary text-white p-4" style="width:250px; min-height:100vh;">
 
