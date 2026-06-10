@@ -1,22 +1,5 @@
-```php
 <?php
 include("includes/db.php");
-
-/* DELETE PATIENT */
-
-if(isset($_GET['delete']))
-{
-    $id = $_GET['delete'];
-
-    mysqli_query($conn, "DELETE FROM patients WHERE id='$id'");
-
-    echo "<script>
-    alert('Patient Deleted Successfully');
-    window.location='patient.php';
-    </script>";
-}
-
-/* ADD PATIENT */
 
 if(isset($_POST['add_patient']))
 {
@@ -26,10 +9,8 @@ if(isset($_POST['add_patient']))
     $gender       = $_POST['gender'];
     $disease      = $_POST['disease'];
 
-    $sql = "INSERT INTO patients
-    (patient_id, patient_name, age, gender, disease)
-    VALUES
-    ('$patient_id','$patient_name','$age','$gender','$disease')";
+    $sql = "INSERT INTO patients(patient_id, patient_name, age, gender, disease)
+            VALUES('$patient_id','$patient_name','$age','$gender','$disease')";
 
     if(mysqli_query($conn, $sql))
     {
@@ -47,182 +28,173 @@ if(isset($_POST['add_patient']))
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Patient Management</title>
+    <title> Patient Page</title>
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<nav class="navbar navbar-dark bg-primary">
-<div class="container-fluid">
-<span class="navbar-brand">
-Hospital Management System
-</span>
-</div>
-</nav>
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+            <span class="navbar-brand">
+                Hospital Management System
+            </span>
+        </div>
+    </nav>
 
-<div class="container mt-5">
+    <div class="container mt-5">
 
-<h2 class="text-center mb-4">
-Patient Management
-</h2>
+        <h2 class="text-center mb-4">
+            Patient Management
+        </h2>
 
-<div class="card p-4 shadow">
+        <div class="card p-4 shadow">
 
-<form method="POST">
+            <form method="POST">
 
-<div class="row">
+                <div class="row">
 
-<div class="col-md-6 mb-3">
-<label class="form-label">Patient ID</label>
-<input type="text"
-name="patient_id"
-class="form-control"
-required>
-</div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Patient ID</label>
+                        <input type="text"
+                               name="patient_id"
+                               class="form-control"
+                               placeholder="Enter Patient ID"
+                               required>
+                    </div>
 
-<div class="col-md-6 mb-3">
-<label class="form-label">Patient Name</label>
-<input type="text"
-name="patient_name"
-class="form-control"
-required>
-</div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Patient Name</label>
+                        <input type="text"
+                               name="patient_name"
+                               class="form-control"
+                               placeholder="Enter Patient Name"
+                               required>
+                    </div>
 
-<div class="col-md-6 mb-3">
-<label class="form-label">Age</label>
-<input type="number"
-name="age"
-class="form-control"
-required>
-</div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Age</label>
+                        <input type="number"
+                               name="age"
+                               class="form-control"
+                               placeholder="Enter Age"
+                               required>
+                    </div>
 
-<div class="col-md-6 mb-3">
+                    <div class="col-md-6 mb-3">
 
-<label class="form-label">
-Gender
-</label>
+                        <label class="form-label">
+                            Gender
+                        </label>
 
-<div>
+                        <div>
 
-<input type="radio"
-name="gender"
-value="Male"
-required>
-Male
+                            <input type="radio"
+                                   id="male"
+                                   name="gender"
+                                   value="Male"
+                                   required>
 
-&nbsp;&nbsp;&nbsp;
+                            <label for="male">
+                                Male
+                            </label>
 
-<input type="radio"
-name="gender"
-value="Female">
-Female
+                            &nbsp;&nbsp;&nbsp;
 
-</div>
+                            <input type="radio"
+                                   id="female"
+                                   name="gender"
+                                   value="Female">
 
-</div>
+                            <label for="female">
+                                Female
+                            </label>
 
-<div class="col-md-12 mb-3">
-<label class="form-label">
-Disease
-</label>
+                        </div>
 
-<input type="text"
-name="disease"
-class="form-control"
-required>
+                    </div>
 
-</div>
+                    <div class="col-md-12 mb-3">
 
-</div>
+                        <label class="form-label">
+                            Disease
+                        </label>
 
-<button type="submit"
-name="add_patient"
-class="btn btn-success">
-Add Patient
-</button>
+                        <input type="text"
+                               name="disease"
+                               class="form-control"
+                               placeholder="Enter Disease"
+                               required>
 
-</form>
+                    </div>
 
-</div>
+                </div>
 
-<div class="mt-5">
+                <div class="mt-3">
 
-<table class="table table-bordered table-striped">
+                    <button type="submit"
+                            name="add_patient"
+                            class="btn btn-success">
+                        Add
+                    </button>
 
-<thead class="table-primary">
+                </div>
 
-<tr>
-<th>Patient ID</th>
-<th>Name</th>
-<th>Age</th>
-<th>Gender</th>
-<th>Disease</th>
-<th>Action</th>
-</tr>
+            </form>
 
-</thead>
+        </div>
 
-<tbody>
+        <div class="mt-5">
 
-<?php
+            <table class="table table-bordered table-striped">
 
-$result = mysqli_query($conn,
-"SELECT * FROM patients");
+                <thead class="table-primary">
 
-while($row = mysqli_fetch_assoc($result))
-{
-?>
+                    <tr>
+                        <th>Patient ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Disease</th>
+                    </tr>
 
-<tr>
+                </thead>
 
-<td><?php echo $row['patient_id']; ?></td>
+                <tbody>
 
-<td><?php echo $row['patient_name']; ?></td>
+                <?php
 
-<td><?php echo $row['age']; ?></td>
+                $result = mysqli_query($conn, "SELECT * FROM patients");
 
-<td><?php echo $row['gender']; ?></td>
+                while($row = mysqli_fetch_assoc($result))
+                {
+                    echo "<tr>
+                            <td>".$row['patient_id']."</td>
+                            <td>".$row['patient_name']."</td>
+                            <td>".$row['age']."</td>
+                            <td>".$row['gender']."</td>
+                            <td>".$row['disease']."</td>
+                          </tr>";
+                }
 
-<td><?php echo $row['disease']; ?></td>
+                ?>
 
-<td>
+                </tbody>
 
-<a href="patient.php?delete=<?php echo $row['id']; ?>"
-class="btn btn-danger btn-sm"
-onclick="return confirm('Are you sure?')">
+            </table>
 
-Delete
+        </div>
 
-</a>
-
-</td>
-
-</tr>
-
-<?php
-}
-?>
-
-</tbody>
-
-</table>
-
-</div>
-
-</div>
+    </div>
 
 </body>
 </html>
-```
