@@ -1,6 +1,7 @@
 <?php
 include("includes/db.php");
 
+
 if(isset($_POST['add_bill']))
 {
     $bill_id = $_POST['bill_id'];
